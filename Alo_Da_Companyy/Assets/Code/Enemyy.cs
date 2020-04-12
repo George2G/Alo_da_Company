@@ -7,6 +7,7 @@ public class Enemyy : MonoBehaviour
     public Animator anim;
     public int maxHealth = 100;
     int currentHealth;
+    private float deadTimer = 2;
 
     void Start()
     {
@@ -30,7 +31,9 @@ public class Enemyy : MonoBehaviour
         Debug.Log("Dead");
 
         anim.SetBool("isDead", true);
+        
 
+        Destroy(gameObject, deadTimer);
         //desable the box collider
         GetComponent<Collider2D>().enabled = false;
         //disable enemy/ script

@@ -55,7 +55,7 @@ public class Player_Movement : MonoBehaviour
         {
             float dashAmount = 5f;
             rb.MovePosition(transform.position + moveDir * dashAmount);
-            Debug.Log("alo da ");
+            
             IsDashButtonDown = false;
         }
     }
