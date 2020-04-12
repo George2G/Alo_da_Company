@@ -7,6 +7,10 @@ public class Player_Movement : MonoBehaviour
     public float speed;
     public float jump;
     private float Movement;
+    private float moveX;
+    private float moveY;
+    private Vector3 moveDir;
+    private bool IsDashButtonDown;
 
     private Rigidbody2D rb;
 
@@ -37,7 +41,7 @@ public class Player_Movement : MonoBehaviour
 
         Movement = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(Movement * speed, rb.velocity.y);
-
+        
         if (Faceing == false && Movement > 0)
         {
             Flip();
@@ -46,10 +50,27 @@ public class Player_Movement : MonoBehaviour
         {
             Flip();
         }
+
+        if (IsDashButtonDown)
+        {
+            float dashAmount = 5f;
+            rb.MovePosition(transform.position + moveDir * dashAmount);
+            IsDashButtonDown = false;
+        }
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            moveX = -1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            moveX = +1f;
+        }
+
         if (Movement != 0)
         {
             anim.SetBool("isRunning", true);
@@ -75,6 +96,11 @@ public class Player_Movement : MonoBehaviour
             rb.velocity = Vector2.up * jump;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift)){
+            IsDashButtonDown = true;
+        }
+
+        moveDir = new Vector3(moveX, moveY).normalized;
     }
 
     public void Flip()
