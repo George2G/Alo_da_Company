@@ -53,7 +53,7 @@ public class Player_Movement : MonoBehaviour
 
         if (IsDashButtonDown)
         {
-            float dashAmount = 5f;
+            float dashAmount = 100f;
             rb.MovePosition(transform.position + moveDir * dashAmount);
             IsDashButtonDown = false;
         }
@@ -61,15 +61,6 @@ public class Player_Movement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            moveX = -1f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            moveX = +1f;
-        }
 
         if (Movement != 0)
         {
@@ -96,8 +87,19 @@ public class Player_Movement : MonoBehaviour
             rb.velocity = Vector2.up * jump;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)){
+        if (Input.GetKeyDown(KeyCode.X))
+        {
             IsDashButtonDown = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            moveX = -1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            moveX = +1f;
         }
 
         moveDir = new Vector3(moveX, moveY).normalized;
