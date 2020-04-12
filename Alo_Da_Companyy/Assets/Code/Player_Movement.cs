@@ -53,8 +53,9 @@ public class Player_Movement : MonoBehaviour
 
         if (IsDashButtonDown)
         {
-            float dashAmount = 100f;
+            float dashAmount = 5f;
             rb.MovePosition(transform.position + moveDir * dashAmount);
+            Debug.Log("alo da ");
             IsDashButtonDown = false;
         }
     }
@@ -87,7 +88,7 @@ public class Player_Movement : MonoBehaviour
             rb.velocity = Vector2.up * jump;
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             IsDashButtonDown = true;
         }
