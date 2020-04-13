@@ -48,4 +48,6 @@ public class Combat : MonoBehaviour
         }
         Gizmos.DrawSphere(attackPoint.position, attackRange);
     }
+
+   
 }

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 659477b866223214b823828232c1b39b
+guid: 18bf9ca32c7e72d40a993a9d8fe804f5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6358611683617910405
-    second: character_dash_0
-  - first:
-      213: -7813432148501183723
-    second: character_dash_1
+      213: 8941480955289284109
+    second: character_dash_2_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -90,7 +87,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_dash_0
+      name: character_dash_2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -104,29 +101,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e813ee884d6cef46bba48f47a442ab0
-      internalID: -6358611683617910405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_dash_1
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 0
-        width: 54
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 909e98629ec8e9c4e85219cc81437463
-      internalID: -7813432148501183723
+      spriteID: dbcf552b9ca9d1548b86e597e929b394
+      internalID: 8941480955289284109
       vertices: []
       indices: 
       edges: []
@@ -134,7 +110,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2f4c0cfb3a1c6844b9c150bdbdba40ad
+    spriteID: 32707897ec39dc44389d315956522853
     internalID: 0
     vertices: []
     indices: 

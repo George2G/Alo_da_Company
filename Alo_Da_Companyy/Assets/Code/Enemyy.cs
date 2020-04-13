@@ -9,8 +9,12 @@ public class Enemyy : MonoBehaviour
     int currentHealth;
     private float deadTimer = 2;
 
+    public BoxCollider2D boxCl;
+    
+
     void Start()
     {
+       
         currentHealth = maxHealth;
     }
 
@@ -23,6 +27,7 @@ public class Enemyy : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 
@@ -31,7 +36,7 @@ public class Enemyy : MonoBehaviour
         Debug.Log("Dead");
 
         anim.SetBool("isDead", true);
-        
+        boxCl.enabled = false;
 
         Destroy(gameObject, deadTimer);
         //desable the box collider
@@ -40,4 +45,7 @@ public class Enemyy : MonoBehaviour
         this.enabled = false;
 
     }
+
+   
+
 }
