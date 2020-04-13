@@ -13,7 +13,7 @@ public class Player_Movement : MonoBehaviour
 
     private bool Faceing = true;
 
-    private bool isGrounded;
+    public bool isGrounded;
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatISGround;
@@ -32,7 +32,9 @@ public class Player_Movement : MonoBehaviour
     public GameObject echo2;
     private Player_Movement player;
 
-    public float smash;
+    public ParticleSystem dust;
+
+   
 
    
 
@@ -46,7 +48,7 @@ public class Player_Movement : MonoBehaviour
 
         anim = GetComponent<Animator>();
 
-
+       
         player = GetComponent<Player_Movement>();
     }
 
@@ -70,6 +72,7 @@ public class Player_Movement : MonoBehaviour
       
         if (IsDashButtonDown)
         {
+            CreateDust();
             anim.SetTrigger("dash");
 
             float dashAmount = 1.5f;
@@ -98,8 +101,11 @@ public class Player_Movement : MonoBehaviour
             JUMPS = extraJUPS;
         }
 
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && JUMPS > 0)
         {
+           
+            CreateDust();
             anim.SetTrigger("jump");
            
             rb.velocity = Vector2.up * jump;
@@ -110,10 +116,9 @@ public class Player_Movement : MonoBehaviour
             rb.velocity = Vector2.up * jump;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            rb.velocity = Vector2.down * smash;
-        }
+
+       
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -133,7 +138,7 @@ public class Player_Movement : MonoBehaviour
         moveDir = new Vector3(moveX, moveY).normalized;
 
         
-        if (timeBtwSpawns <= 0 )
+       /* if (timeBtwSpawns <= 0 )
         {
 
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -159,14 +164,22 @@ public class Player_Movement : MonoBehaviour
         {
                 timeBtwSpawns -= Time.deltaTime;
         }
+            */
+
         
     }
 
     public void Flip()
     {
+        CreateDust();
         Faceing = !Faceing;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+
+    public void CreateDust()
+    {
+        dust.Play();
     }
 }
