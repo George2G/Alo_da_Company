@@ -32,6 +32,8 @@ public class Player_Movement : MonoBehaviour
     public GameObject echo2;
     private Player_Movement player;
 
+    public float smash;
+
    
 
 
@@ -106,6 +108,11 @@ public class Player_Movement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow) && JUMPS == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jump;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            rb.velocity = Vector2.down * smash;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))

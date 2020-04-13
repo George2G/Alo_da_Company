@@ -242,6 +242,7 @@ MonoBehaviour:
   startTimeBtwSpawns: 0.1
   echo: {fileID: 8733659920235195982, guid: d525bd247daef8449b176c8f750584ce, type: 3}
   echo2: {fileID: 6253370281523079284, guid: c37677fc1983e5b4aa59ad3a8cb86e55, type: 3}
+  smash: 100
 --- !u!212 &174306598
 SpriteRenderer:
   m_ObjectHideFlags: 0
