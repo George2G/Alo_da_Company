@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 554652076}
   - component: {fileID: 554652077}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: top
   m_TagString: Top
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554652075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002, y: 0.184, z: -0.82188344}
+  m_LocalPosition: {x: -0.0021, y: 0.1662, z: -0.82188344}
   m_LocalScale: {x: 0.10619634, y: 0.10619634, z: 0.10619634}
   m_Children: []
   m_Father: {fileID: 988685550}
@@ -505,7 +505,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09316468, y: 0}
+  m_Offset: {x: 0.09316468, y: 0.3093717}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -516,7 +516,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.925408, y: 1}
+  m_Size: {x: 2.925408, y: 0.38125658}
   m_EdgeRadius: 0
 --- !u!1 &758885953
 GameObject:
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 1474946564}
   - component: {fileID: 1474946563}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: smashh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,6 +753,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 50
   bounce: 20
+  groundCheck: {fileID: 333583500}
+  checkRadius: 0.5
+  whatISGround:
+    serializedVersion: 2
+    m_Bits: 512
+  boxCL1: {fileID: 1474946564}
+  smash: 10
 --- !u!61 &1474946564
 BoxCollider2D:
   m_ObjectHideFlags: 0
