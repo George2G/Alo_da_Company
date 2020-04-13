@@ -7,10 +7,7 @@ public class Player_Movement : MonoBehaviour
     public float speed;
     public float jump;
     private float Movement;
-    private float moveX;
-    private float moveY;
-    private Vector3 moveDir;
-    private bool IsDashButtonDown;
+
 
     private Rigidbody2D rb;
 
@@ -24,6 +21,18 @@ public class Player_Movement : MonoBehaviour
     private int JUMPS;
     public int extraJUPS;
 
+     private float moveX;
+     private float moveY;
+     private Vector3 moveDir;
+     private bool IsDashButtonDown;
+
+    private float timeBtwSpawns;
+    public float startTimeBtwSpawns;
+    public GameObject echo;
+    public GameObject echo2;
+    private Player_Movement player;
+
+
     private Animator anim;
 
     private void Start()
@@ -32,6 +41,8 @@ public class Player_Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
+
+        player = GetComponent<Player_Movement>();
     }
 
     private void FixedUpdate()
@@ -51,13 +62,18 @@ public class Player_Movement : MonoBehaviour
             Flip();
         }
 
+      
         if (IsDashButtonDown)
         {
-            float dashAmount = 5f;
+            anim.SetTrigger("dash");
+
+            float dashAmount = 1.5f;
             rb.MovePosition(transform.position + moveDir * dashAmount);
             
             IsDashButtonDown = false;
         }
+        
+       
     }
 
     private void Update()
@@ -93,17 +109,46 @@ public class Player_Movement : MonoBehaviour
             IsDashButtonDown = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             moveX = -1f;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             moveX = +1f;
         }
 
         moveDir = new Vector3(moveX, moveY).normalized;
+
+        
+        if (timeBtwSpawns <= 0 )
+        {
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                GameObject instace1 = (GameObject)Instantiate(echo2, transform.position, Quaternion.identity);
+                Debug.Log("ya");
+                Destroy(instace1, 1f);
+                timeBtwSpawns = startTimeBtwSpawns;
+            }
+            else
+            {
+
+                GameObject instace2 = (GameObject)Instantiate(echo, transform.position, Quaternion.identity);
+                Debug.Log("yappp11");
+                Destroy(instace2, 1f);
+                timeBtwSpawns = startTimeBtwSpawns;
+            }
+    
+
+                
+        }
+        else
+        {
+                timeBtwSpawns -= Time.deltaTime;
+        }
+        
     }
 
     public void Flip()

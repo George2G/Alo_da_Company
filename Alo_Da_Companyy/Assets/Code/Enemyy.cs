@@ -9,6 +9,8 @@ public class Enemyy : MonoBehaviour
     int currentHealth;
     private float deadTimer = 2;
 
+    
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -40,4 +42,7 @@ public class Enemyy : MonoBehaviour
         this.enabled = false;
 
     }
+
+   
+
 }
