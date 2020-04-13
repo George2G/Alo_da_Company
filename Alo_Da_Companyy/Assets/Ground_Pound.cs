@@ -29,8 +29,7 @@ public class Ground_Pound : MonoBehaviour
             boxCL1.enabled = true;
             rb.velocity = Vector2.down * smash;
             //add animation
-            
-
+ 
         }
         
     }
@@ -47,8 +46,9 @@ public class Ground_Pound : MonoBehaviour
         if (collision.tag == "Top")
         {
 
-            collision.gameObject.transform.parent.gameObject.GetComponent<Enemyy>().TakeDamage(dmg);
             rb.velocity = new Vector2(rb.velocity.x, bounce);
+            collision.gameObject.transform.parent.gameObject.GetComponent<Enemyy>().TakeDamage(dmg);
+            boxCL1.enabled = false;
         }
     }
 }
