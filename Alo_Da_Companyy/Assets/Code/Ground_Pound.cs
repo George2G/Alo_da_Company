@@ -8,6 +8,8 @@ public class Ground_Pound : MonoBehaviour
     public int bounce;
     private Rigidbody2D rb;
 
+    public Animator ainm;
+
     private bool isGoundedd;
     public Transform groundCheck;
     public float checkRadius;
@@ -26,9 +28,10 @@ public class Ground_Pound : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && isGoundedd == false)
         {
+            ainm.SetTrigger("smash");
             boxCL1.enabled = true;
             rb.velocity = Vector2.down * smash;
-            //add animation
+            
  
         }
         
@@ -45,7 +48,6 @@ public class Ground_Pound : MonoBehaviour
     {
         if (collision.tag == "Top")
         {
-
             rb.velocity = new Vector2(rb.velocity.x, bounce);
             collision.gameObject.transform.parent.gameObject.GetComponent<Enemyy>().TakeDamage(dmg);
             boxCL1.enabled = false;
