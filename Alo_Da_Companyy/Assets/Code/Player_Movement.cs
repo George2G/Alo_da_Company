@@ -32,6 +32,8 @@ public class Player_Movement : MonoBehaviour
     public GameObject echo2;
     private Player_Movement player;
 
+   
+
 
     private Animator anim;
 
@@ -41,6 +43,7 @@ public class Player_Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
+
 
         player = GetComponent<Player_Movement>();
     }
@@ -96,6 +99,7 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && JUMPS > 0)
         {
             anim.SetTrigger("jump");
+           
             rb.velocity = Vector2.up * jump;
             JUMPS--;
         }
