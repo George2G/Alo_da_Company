@@ -23,7 +23,14 @@ public class CameraFolloww : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatISGround);
+        if (playerTransform != null)
+        {
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatISGround);
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     // Update is called once per frame
