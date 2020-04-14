@@ -14,6 +14,7 @@ public class MeleEnemy : Enemyy
 
    /*private void Update()
     {
+        if (player != null)
         {
             if (Vector2.Distance(transform.position, player.position) > stopdDistance)
             {
