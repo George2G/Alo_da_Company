@@ -5,16 +5,26 @@ using UnityEngine;
 public class Enemyy : MonoBehaviour
 {
     public Animator anim;
+
+    public int dmg;
     public int maxHealth = 100;
     int currentHealth;
     private float deadTimer = 2;
+    public float speed;
 
     public BoxCollider2D boxCl;
+    public Rigidbody2D rb;
+
+    [HideInInspector]
+    public Transform player;
+
+    public float timeBtwAttacks;
     
 
     void Start()
     {
-       
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
 
@@ -37,6 +47,8 @@ public class Enemyy : MonoBehaviour
 
         anim.SetBool("isDead", true);
         boxCl.enabled = false;
+        Destroy(rb);
+
 
         Destroy(gameObject, deadTimer);
         //desable the box collider

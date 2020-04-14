@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 174306600}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jump: 15
+  currentHealth: 100
   isGrounded: 0
   groundCheck: {fileID: 333583500}
   checkRadius: 0.5
@@ -577,7 +578,7 @@ MonoBehaviour:
   checkRadius: 0.5
   whatISGround:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
 --- !u!4 &758885955
 Transform:
   m_ObjectHideFlags: 0
@@ -604,10 +605,11 @@ GameObject:
   - component: {fileID: 988685550}
   - component: {fileID: 988685549}
   - component: {fileID: 988685548}
-  - component: {fileID: 988685546}
+  - component: {fileID: 988685547}
   - component: {fileID: 988685551}
+  - component: {fileID: 988685546}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,12 +624,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 988685545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5699b0cd0fdb0b8428d6d7f70eb2392c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f7889517fc26aa45b8dc3a960f3eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 988685551}
+  dmg: 10
   maxHealth: 100
+  speed: 1
   boxCl: {fileID: 554652077}
+  rb: {fileID: 0}
+  player: {fileID: 0}
+  timeBtwAttacks: 5
+  stopdDistance: 3.5
+--- !u!50 &988685547
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988685545}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &988685548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -641,7 +670,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0025492907, y: -0.00028187782}
+  m_Offset: {x: 0.0025492907, y: 0.0048253387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -652,7 +681,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5360961, y: 0.4530989}
+  m_Size: {x: 0.5360961, y: 0.44288447}
   m_EdgeRadius: 0
 --- !u!212 &988685549
 SpriteRenderer:

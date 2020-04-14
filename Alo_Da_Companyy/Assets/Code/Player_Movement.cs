@@ -7,6 +7,7 @@ public class Player_Movement : MonoBehaviour
     public float speed;
     public float jump;
     private float Movement;
+    public float currentHealth;
 
 
     private Rigidbody2D rb;
@@ -33,11 +34,6 @@ public class Player_Movement : MonoBehaviour
     private Player_Movement player;
 
     public ParticleSystem dust;
-
-   
-
-   
-
 
     private Animator anim;
 
@@ -169,6 +165,22 @@ public class Player_Movement : MonoBehaviour
         
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        //anim.SetTrigger("hurt");
+
+        if (currentHealth <= 0)
+        {
+
+            //GetComponent<Collider2D>().enabled = false;
+            Destroy(gameObject);
+        }
+    }
+
+    
+
     public void Flip()
     {
         CreateDust();
@@ -181,5 +193,9 @@ public class Player_Movement : MonoBehaviour
     public void CreateDust()
     {
         dust.Play();
+    }
+    public void Jump()
+    {
+        Input.GetKeyDown(KeyCode.UpArrow);
     }
 }
