@@ -15,15 +15,15 @@ public class Enemyy : MonoBehaviour
     public BoxCollider2D boxCl;
     public Rigidbody2D rb;
 
-    [HideInInspector]
-    public Transform player;
+   // [HideInInspector]
+   // public Transform player;
 
     public float timeBtwAttacks;
     
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+      //  player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
