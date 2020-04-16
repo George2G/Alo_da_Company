@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     private bool trigger;
     public float stopdDistance;
     public CircleCollider2D colliderr;
+    
 
     
 
@@ -18,20 +19,41 @@ public class EnemyAI : MonoBehaviour
         if (Vector2.Distance(transform.position, player.position) < colliderr.radius)
         {
             Debug.Log("fk");
-            if (trigger)
+            if (trigger == true)
             {
-                Debug.Log("hehee i hit you ");
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                if (Vector2.Distance(transform.position,player.position) > stopdDistance )
+                {
+                     Debug.Log("hehee i hit you ");
+                     transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                }
+               
+                else
+                {
+                    //attack
+                    Debug.Log("gay");
+                }
+            }
+            //in case of you hitting the enemy fron top and treigger disables it's self untill you re-enter the  trigger
+            else
+            {
                 if (Vector2.Distance(transform.position, player.position) > stopdDistance)
                 {
-                    Debug.Log("fk11");
+                    Debug.Log("hehee i hit you ");
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 }
-                
+
+                else
+                {
+                    //attack
+                    Debug.Log("gay");
+                }
             }
 
         }
         else
         {
+                Debug.Log("_____L____ ");
+
             /*if (MoveRight)
             {
                 transform.Translate(2 * Time.deltaTime * speed, 0, 0);
@@ -47,6 +69,8 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
+
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         trigger = true;

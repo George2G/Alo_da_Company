@@ -19,6 +19,8 @@ public class Enemyy : MonoBehaviour
    // public Transform player;
 
     public float timeBtwAttacks;
+
+    
     
 
     void Start()
@@ -30,6 +32,7 @@ public class Enemyy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
         currentHealth -= damage;
 
         anim.SetTrigger("hurt");
@@ -43,6 +46,7 @@ public class Enemyy : MonoBehaviour
 
     public void Die()
     {
+        
         Debug.Log("Dead");
 
         anim.SetBool("isDead", true);
