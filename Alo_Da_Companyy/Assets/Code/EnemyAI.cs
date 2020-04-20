@@ -11,12 +11,12 @@ public class EnemyAI : MonoBehaviour
     public float stopdDistance;
     public CircleCollider2D colliderr;
     private MeleEnemy attack;
-    private Animator anim;
+  
 
     private void Start()
     {
         attack = GetComponent<MeleEnemy>();
-        anim = GetComponent<Animator>();
+        
     }
 
 
@@ -30,17 +30,11 @@ public class EnemyAI : MonoBehaviour
                 if (Vector2.Distance(transform.position,player.position) > stopdDistance )
                 {
                     transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                 
-
                 }
                 else
                 {
-                    //attack
-                     anim.SetBool("isAttacking", true);
-
-                     attack.AttackMotion();
-                  
-
+    
+                    attack.AttackMotion();
                 }
             }
             //in case of you hitting the enemy fron top and treigger disables it's self untill you re-enter the  trigger
@@ -60,11 +54,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-                Debug.Log("nope");
-                trigger = false;
-                anim.SetBool("isAttacking", false);
                 Debug.Log("_____L____ ");
-
             if (MoveRight)
             {
                 transform.Translate(2 * Time.deltaTime * speed, 0, 0);
