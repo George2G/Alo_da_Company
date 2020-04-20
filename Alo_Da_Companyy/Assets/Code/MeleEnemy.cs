@@ -11,6 +11,12 @@ public class MeleEnemy : Enemyy
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask PlayerLayer;
+    private Player_Movement player;
+
+    private void Start()
+    {
+        player = GetComponent<Player_Movement>();
+    }
 
     /*private void Update()
      {
@@ -41,18 +47,32 @@ public class MeleEnemy : Enemyy
 
     public void AttackMotion()
      {
-         anim.SetTrigger("attack");
+        if (player != null)
+        {
+            anim.SetBool("isAttacking", true);
+            Debug.Log("yap");
 
-         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, PlayerLayer);
+            Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, PlayerLayer);
 
 
-         foreach (Collider2D player in hitPlayer)
-         {
-             player.GetComponent<Player_Movement>().TakeDamage(dmg);
-         }
-     }
+            foreach (Collider2D player in hitPlayer)
+            {
+                player.GetComponent<Player_Movement>().TakeDamage(dmg);
+            }
 
-     public void OnDrawGizmosSelected()//draw stuff in the editor that are usually unseeable
+        }
+        else 
+        {
+            anim.SetBool("isAttacking", false);
+            Debug.Log("you dead");
+        }
+
+
+        
+
+    }
+
+    public void OnDrawGizmosSelected()//draw stuff in the editor that are usually unseeable
      {
          if (attackPoint == null)
          {

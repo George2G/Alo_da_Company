@@ -10,41 +10,49 @@ public class EnemyAI : MonoBehaviour
     private bool trigger;
     public float stopdDistance;
     public CircleCollider2D colliderr;
-    
+    private MeleEnemy attack;
+    private Animator anim;
 
-    
+    private void Start()
+    {
+        attack = GetComponent<MeleEnemy>();
+        anim = GetComponent<Animator>();
+    }
+
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, player.position) < colliderr.radius)
-        {
-            Debug.Log("fk");
+        if (Vector2.Distance(transform.position, player.position) < colliderr.radius && player != null  )
+        { 
+           
             if (trigger == true)
             {
                 if (Vector2.Distance(transform.position,player.position) > stopdDistance )
                 {
-                     Debug.Log("hehee i hit you ");
-                     transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                 
+
                 }
-               
                 else
                 {
                     //attack
-                    Debug.Log("gay");
+                     anim.SetBool("isAttacking", true);
+
+                     attack.AttackMotion();
+                  
+
                 }
             }
             //in case of you hitting the enemy fron top and treigger disables it's self untill you re-enter the  trigger
             else
             {
                 if (Vector2.Distance(transform.position, player.position) > stopdDistance)
-                {
-                    Debug.Log("hehee i hit you ");
+                {            
                     transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 }
 
                 else
                 {
-                    //attack
                     Debug.Log("gay");
                 }
             }
@@ -52,9 +60,12 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
+                Debug.Log("nope");
+                trigger = false;
+                anim.SetBool("isAttacking", false);
                 Debug.Log("_____L____ ");
 
-            /*if (MoveRight)
+            if (MoveRight)
             {
                 transform.Translate(2 * Time.deltaTime * speed, 0, 0);
                 transform.localScale = new Vector2(-9, 9);
@@ -65,7 +76,7 @@ public class EnemyAI : MonoBehaviour
                 transform.localScale = new Vector2(9, 9);
 
             }
-            */
+            
         }
 
     }
