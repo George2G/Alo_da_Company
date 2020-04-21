@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        //how to stop cheking after the player is dead
         if (Vector2.Distance(transform.position, player.position) < colliderr.radius && player != null  )
         { 
            
@@ -33,7 +34,7 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-    
+                   
                     attack.AttackMotion();
                 }
             }
@@ -52,7 +53,7 @@ public class EnemyAI : MonoBehaviour
             }
 
         }
-        else
+        else 
         {
                 Debug.Log("_____L____ ");
             if (MoveRight)
