@@ -15,21 +15,24 @@ public class Enemyy : MonoBehaviour
     public BoxCollider2D boxCl;
     public Rigidbody2D rb;
 
-    [HideInInspector]
-    public Transform player;
+   // [HideInInspector]
+   // public Transform player;
 
     public float timeBtwAttacks;
+
+    
     
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+      //  player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
+        
         currentHealth -= damage;
 
         anim.SetTrigger("hurt");
@@ -43,6 +46,7 @@ public class Enemyy : MonoBehaviour
 
     public void Die()
     {
+        
         Debug.Log("Dead");
 
         anim.SetBool("isDead", true);

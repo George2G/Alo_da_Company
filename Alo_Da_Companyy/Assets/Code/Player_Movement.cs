@@ -10,9 +10,14 @@ public class Player_Movement : MonoBehaviour
     public float currentHealth;
 
 
+    private Animator anim;
+
     private Rigidbody2D rb;
 
     private bool Faceing = true;
+
+    public ParticleSystem dust;
+
 
     public bool isGrounded;
     public Transform groundCheck;
@@ -33,10 +38,11 @@ public class Player_Movement : MonoBehaviour
     public GameObject echo2;
     private Player_Movement player;
 
-    public ParticleSystem dust;
 
-    private Animator anim;
 
+   
+
+   
     private void Start()
     {
         JUMPS = extraJUPS;
@@ -133,36 +139,36 @@ public class Player_Movement : MonoBehaviour
 
         moveDir = new Vector3(moveX, moveY).normalized;
 
+
+        /* if (timeBtwSpawns <= 0 )
+         {
+
+             if (Input.GetKeyDown(KeyCode.RightArrow))
+             {
+                 GameObject instace1 = (GameObject)Instantiate(echo2, transform.position, Quaternion.identity);
+                 Debug.Log("ya");
+                 Destroy(instace1, 1f);
+                 timeBtwSpawns = startTimeBtwSpawns;
+             }
+             else
+             {
+
+                 GameObject instace2 = (GameObject)Instantiate(echo, transform.position, Quaternion.identity);
+                 Debug.Log("yappp11");
+                 Destroy(instace2, 1f);
+                 timeBtwSpawns = startTimeBtwSpawns;
+             }
+
+
+
+         }
+         else
+         {
+                 timeBtwSpawns -= Time.deltaTime;
+         }
+             */
         
-       /* if (timeBtwSpawns <= 0 )
-        {
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                GameObject instace1 = (GameObject)Instantiate(echo2, transform.position, Quaternion.identity);
-                Debug.Log("ya");
-                Destroy(instace1, 1f);
-                timeBtwSpawns = startTimeBtwSpawns;
-            }
-            else
-            {
-
-                GameObject instace2 = (GameObject)Instantiate(echo, transform.position, Quaternion.identity);
-                Debug.Log("yappp11");
-                Destroy(instace2, 1f);
-                timeBtwSpawns = startTimeBtwSpawns;
-            }
-    
-
-                
-        }
-        else
-        {
-                timeBtwSpawns -= Time.deltaTime;
-        }
-            */
-
-        
     }
 
     public void TakeDamage(int damage)
@@ -194,8 +200,7 @@ public class Player_Movement : MonoBehaviour
     {
         dust.Play();
     }
-    public void Jump()
-    {
-        Input.GetKeyDown(KeyCode.UpArrow);
-    }
+
+   
+
 }
