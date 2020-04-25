@@ -245,6 +245,7 @@ MonoBehaviour:
   startTimeBtwSpawns: 0.1
   echo: {fileID: 8733659920235195982, guid: d525bd247daef8449b176c8f750584ce, type: 3}
   echo2: {fileID: 6253370281523079284, guid: c37677fc1983e5b4aa59ad3a8cb86e55, type: 3}
+  boxCl: {fileID: 0}
 --- !u!212 &174306598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -740,12 +741,12 @@ MonoBehaviour:
   boxCl: {fileID: 554652077}
   rb: {fileID: 0}
   timeBtwAttacks: 5
-  attackTime: 0
   attackPoint: {fileID: 1713165602}
   attackRange: 1.48
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  attackDmg: 10
 --- !u!50 &988685547
 Rigidbody2D:
   serializedVersion: 4
@@ -849,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988685545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.841, y: -1.781, z: 0}
+  m_LocalPosition: {x: 9.7, y: -1.781, z: 0}
   m_LocalScale: {x: 9.416521, y: 9.416521, z: 9.416521}
   m_Children:
   - {fileID: 554652076}
@@ -918,7 +919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995934093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.447038, y: 2.42733, z: 1.6317062}
+  m_LocalPosition: {x: -4.8, y: 2.42733, z: 1.6317062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1217812002}
