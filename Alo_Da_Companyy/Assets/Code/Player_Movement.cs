@@ -38,11 +38,9 @@ public class Player_Movement : MonoBehaviour
     public GameObject echo2;
     private Player_Movement player;
 
+    public BoxCollider2D boxCl;
+    private float deadTimer = 2;
 
-
-   
-
-   
     private void Start()
     {
         JUMPS = extraJUPS;
@@ -52,6 +50,7 @@ public class Player_Movement : MonoBehaviour
 
        
         player = GetComponent<Player_Movement>();
+        boxCl = GetComponent<BoxCollider2D>();
     }
 
     private void FixedUpdate()
@@ -175,17 +174,34 @@ public class Player_Movement : MonoBehaviour
     {
         currentHealth -= damage;
 
-        //anim.SetTrigger("hurt");
+        anim.SetTrigger("hurt");
 
         if (currentHealth <= 0)
         {
-
-            //GetComponent<Collider2D>().enabled = false;
-            Destroy(gameObject);
+            Die();
+            GetComponent<Collider2D>().enabled = false;
+          
         }
     }
 
-    
+    public void Die()
+    {
+
+        Debug.Log("Dead");
+
+        anim.SetBool("isDead", true);
+        boxCl.enabled = false;
+        Destroy(rb);
+
+
+        Destroy(gameObject, deadTimer);
+        //desable the box collider
+        GetComponent<Collider2D>().enabled = false;
+        //disable enemy/ script
+        this.enabled = false;
+
+    }
+
 
     public void Flip()
     {
