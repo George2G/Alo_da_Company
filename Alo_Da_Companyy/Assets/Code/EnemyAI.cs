@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //how to stop cheking after the player is dead
-        if (Vector2.Distance(transform.position, player.position) < colliderr.radius && player != null  )
+        if (player != null && Vector2.Distance(transform.position, player.position) < colliderr.radius  )
         { 
            
             if (trigger == true)
