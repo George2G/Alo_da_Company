@@ -11,11 +11,17 @@ public class EnemyAI : MonoBehaviour
     public float stopdDistance;
     public CircleCollider2D colliderr;
     private MeleEnemy attack;
-  
+    public Animator anim;
+    
+
+    public float attackRate = 2f;
+    private float nextAttackTime = 0f;
+
 
     private void Start()
     {
         attack = GetComponent<MeleEnemy>();
+        anim = GetComponent<Animator>();
         
     }
 
@@ -24,18 +30,22 @@ public class EnemyAI : MonoBehaviour
     {
         //how to stop cheking after the player is dead
         if (player != null && Vector2.Distance(transform.position, player.position) < colliderr.radius  )
-        { 
-           
+        {
+            anim.SetBool("isChasing", true);
             if (trigger == true)
             {
+                
                 if (Vector2.Distance(transform.position,player.position) > stopdDistance )
                 {
                     transform.position = Vector2.MoveTowards(transform.position, player.position, speed_for_Patrol * Time.deltaTime);
                 }
                 else
-                {
-                   
-                    attack.AttackMotion();
+                { 
+                    if (Time.time >= nextAttackTime)
+                    {
+                      attack.AttackMotion();
+                        nextAttackTime = Time.time + 1f / attackRate;
+                    }
                 }
             }
             //in case of you hitting the enemy fron top and treigger disables it's self untill you re-enter the  trigger
@@ -55,7 +65,9 @@ public class EnemyAI : MonoBehaviour
         }
         else 
         {
-                Debug.Log("_____L____ ");
+            anim.SetBool("isChasing", false);
+
+            Debug.Log("_____L____ ");
             if (MoveRight)
             {
                 transform.Translate(2 * Time.deltaTime * speed_for_Patrol, 0, 0);
@@ -96,4 +108,5 @@ public class EnemyAI : MonoBehaviour
         trigger = false;
     }
 
+   
 }
