@@ -48,7 +48,7 @@ public class EnemyAI : MonoBehaviour
 
                 else
                 {
-                    Debug.Log("gay");
+                    Debug.Log("gayyyyyyyyyyy");
                 }
             }
 
