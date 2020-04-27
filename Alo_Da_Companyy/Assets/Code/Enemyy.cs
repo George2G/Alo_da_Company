@@ -6,7 +6,7 @@ public class Enemyy : MonoBehaviour
 {
     public Animator anim;
 
-    public int dmg;
+    
     public int maxHealth = 100;
     int currentHealth;
     private float deadTimer = 2;
@@ -15,7 +15,7 @@ public class Enemyy : MonoBehaviour
     public BoxCollider2D boxCl;
     public Rigidbody2D rb;
 
-    public float timeBtwAttacks;
+    //public float timeBtwAttacks;
    
 
     void Start()
@@ -35,7 +35,7 @@ public class Enemyy : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            GetComponent<Collider2D>().enabled = false;
+           
         }
     }
 
@@ -47,6 +47,7 @@ public class Enemyy : MonoBehaviour
         anim.SetBool("isDead", true);
         boxCl.enabled = false;
         Destroy(rb);
+        
 
 
         Destroy(gameObject, deadTimer);
@@ -56,7 +57,4 @@ public class Enemyy : MonoBehaviour
         this.enabled = false;
 
     }
-
-   
-
 }

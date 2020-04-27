@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float speed;
+    public float speed_for_Patrol;
     public bool MoveRight;
     public Transform player;
     private bool trigger;
@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
             {
                 if (Vector2.Distance(transform.position,player.position) > stopdDistance )
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed_for_Patrol * Time.deltaTime);
                 }
                 else
                 {
@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
             {
                 if (Vector2.Distance(transform.position, player.position) > stopdDistance)
                 {            
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed_for_Patrol * Time.deltaTime);
                 }
 
                 else
@@ -58,12 +58,12 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("_____L____ ");
             if (MoveRight)
             {
-                transform.Translate(2 * Time.deltaTime * speed, 0, 0);
+                transform.Translate(2 * Time.deltaTime * speed_for_Patrol, 0, 0);
                 transform.localScale = new Vector2(-9, 9);
             }
             else
             {
-                transform.Translate(-2 * Time.deltaTime * speed, 0, 0);
+                transform.Translate(-2 * Time.deltaTime * speed_for_Patrol, 0, 0);
                 transform.localScale = new Vector2(9, 9);
 
             }

@@ -12,7 +12,7 @@ public class MeleEnemy : Enemyy
     public float attackRange = 0.5f;
     public LayerMask PlayerLayer;
 
-    public int attackDmg = 10;
+    public int attackDmg;
     private Player_Movement player;
 
     private void Start()
