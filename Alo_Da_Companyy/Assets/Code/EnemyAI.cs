@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
 
+    bool stopmoveing = false;
+
 
     private void Start()
     {
@@ -31,21 +33,29 @@ public class EnemyAI : MonoBehaviour
         //how to stop cheking after the player is dead
         if (player != null && Vector2.Distance(transform.position, player.position) < colliderr.radius  )
         {
-            anim.SetBool("isChasing", true);
             if (trigger == true)
             {
+            anim.SetBool("isChasing", true);
                 
                 if (Vector2.Distance(transform.position,player.position) > stopdDistance )
                 {
+                    anim.SetBool("isAttacking", false);
+
                     transform.position = Vector2.MoveTowards(transform.position, player.position, speed_for_Patrol * Time.deltaTime);
                 }
                 else
-                { 
+                {
+                    
+                    anim.SetBool("isAttacking", true);
+ 
                     if (Time.time >= nextAttackTime)
                     {
-                      attack.AttackMotion();
+                        stopmoveing = true;
+                       
+                      anim.SetTrigger("attack");
                         nextAttackTime = Time.time + 1f / attackRate;
                     }
+                    
                 }
             }
             //in case of you hitting the enemy fron top and treigger disables it's self untill you re-enter the  trigger
