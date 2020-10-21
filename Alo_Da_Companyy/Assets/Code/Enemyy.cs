@@ -15,7 +15,8 @@ public class Enemyy : MonoBehaviour
     public BoxCollider2D boxCl;
     public Rigidbody2D rb;
 
-    //public float timeBtwAttacks;
+
+    private scene_transition sceneTransitions;
    
 
     void Start()
@@ -23,6 +24,7 @@ public class Enemyy : MonoBehaviour
       
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        sceneTransitions = FindObjectOfType<scene_transition>();
     }
 
     public void TakeDamage(int damage)
@@ -35,6 +37,8 @@ public class Enemyy : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            
+            sceneTransitions.LoadScene("win"); 
            
         }
     }

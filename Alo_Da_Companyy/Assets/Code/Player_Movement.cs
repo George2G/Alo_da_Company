@@ -24,6 +24,12 @@ public class Player_Movement : MonoBehaviour
     public float checkRadius;
     public LayerMask whatISGround;
 
+    public bool deathpanel;
+    public Transform deathpanelCheck;
+    public LayerMask whatISdeathpanel;
+
+
+
     private int JUMPS;
     public int extraJUPS;
 
@@ -41,6 +47,7 @@ public class Player_Movement : MonoBehaviour
     public BoxCollider2D boxCl;
     private float deadTimer = 2;
 
+    private scene_transition sceneTransitions;
     private void Start()
     {
         JUMPS = extraJUPS;
@@ -51,11 +58,14 @@ public class Player_Movement : MonoBehaviour
        
         player = GetComponent<Player_Movement>();
         boxCl = GetComponent<BoxCollider2D>();
+
+        sceneTransitions = FindObjectOfType<scene_transition>();
     }
 
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatISGround);
+        deathpanel = Physics2D.OverlapCircle(deathpanelCheck.position, checkRadius, whatISdeathpanel);
 
 
         Movement = Input.GetAxis("Horizontal");
@@ -180,7 +190,14 @@ public class Player_Movement : MonoBehaviour
         {
             Die();
             GetComponent<Collider2D>().enabled = false;
-          
+            sceneTransitions.LoadScene("lose");
+
+        }
+        else if (deathpanel == true)
+        {
+            Die();
+            GetComponent<Collider2D>().enabled = false;
+            sceneTransitions.LoadScene("lose");
         }
     }
 
